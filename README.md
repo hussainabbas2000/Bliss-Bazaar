@@ -4,7 +4,6 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 To push prisma models
 ```bash
-npm run dev
 npx prisma db push
 ```
 To run prisma client:
