@@ -7,40 +7,11 @@ import { cookies } from "next/headers";
 import { cache } from "react";
 import PageNotFound from "@/app/navErrorPage";
 import Image from "next/image";
+import { editProd } from "./actions";
 export const metadata = {
   title: "Add Product - Bliss Bazaar",
 };
 
-async function editProd(formData: FormData) {
-  "use server";
-  const session = cookies().get("localAdminID")?.value;
-  if(session ==""){
-    redirect("/admin/adminLogin");
-  }
-
-  const id = formData.get("id")?.toString();
-  console.log(id)
-  const name = formData.get("name")?.toString();
-  const description = formData.get("description")?.toString();
-  const price = Number(formData.get("price") || 0);
-  const imgUrl = formData.get("imageUrl")?.toString();
-    console.log(id)
-  if (!name || !description || !imgUrl || !price) {
-    throw Error("Required fields are missing!");
-  }
-  await prisma.product.update({
-    where:{id: id},
-    data: { 
-
-        description: description,
-        imgUrl : imgUrl, 
-        name :name,
-        price: price
-    
-    },
-  });
-  redirect("/adminDashboard");
-}
 
 interface ProductProps {
     params: {
@@ -79,6 +50,7 @@ export default async function EditProductPage({params: { id }}: ProductProps) {
 
         <div className="flex flex-row gap-3 font-bold">
             <label>ID:</label>
+
             <input className="input input-bordered mb-4 w-full" name="id" value={`${product?.id}`} required readOnly></input>
         </div>
         <div className="flex flex-row gap-3 font-bold">

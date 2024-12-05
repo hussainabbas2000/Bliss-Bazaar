@@ -6,8 +6,7 @@ import { getCart } from "@/client/db/cart";
 import CartButton from "./CartButton";
 import UserButton from "./UserButton";
 import { getServerSession } from "next-auth";
-import { authSelections } from "../api/auth/[...nextauth]/route";
-
+import { authOptions } from "src/app/api/auth/authConfig";
 async function searchProds(formData:FormData) {
     "use server";
     const query = formData.get("searchSite")?.toString();
@@ -19,7 +18,7 @@ async function searchProds(formData:FormData) {
 
 export default async function Navbar() {
     const cart = await getCart();
-    const session = await getServerSession(authSelections);
+    const session = await getServerSession(authOptions);
   return (
     <div className="bg bg-base-100">
       <div className="navbar max-w-5xl m-auto flex-col sm:flex-row gap-3">

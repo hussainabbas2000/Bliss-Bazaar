@@ -7,6 +7,8 @@ import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 
 export async function handleDelete(prodId:string) {
-    await prisma.product.delete({where:{id:prodId}});
-    revalidatePath("/adminDashboard/deleteProduct"); 
+    const res = await prisma.product.delete({where:{id:prodId}});
+    if (res){
+        revalidatePath("/adminDashboard/deleteProduct"); 
+    }
 }

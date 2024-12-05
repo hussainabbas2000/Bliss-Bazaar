@@ -1,7 +1,7 @@
 import { prisma } from "../src/client/db/prisma";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
-import {addProd} from "../src/app/adminDashboard/addProduct/page";
+import {addProd} from "../src/app/adminDashboard/addProduct/actions";
 
 jest.mock("next/navigation", () => ({
   redirect: jest.fn(),

@@ -6,11 +6,8 @@ import { cookies } from "next/headers";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import Link from "next/link";
-export default async function adminHome({
-    children,
-  }: Readonly<{
-    children: React.ReactNode;
-  }>) {
+const AdminHome = async({
+  }) => {
   
   if(cookies().get("localAdminID")?.value === ""){
     redirect("/admin/adminLogin")
@@ -59,5 +56,7 @@ export default async function adminHome({
             </div>
       </div>
   );
-}
+};
+export default AdminHome;
+
 

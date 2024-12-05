@@ -4,13 +4,20 @@ import { createCart, getCart } from "@/client/db/cart";
 import { prisma } from "@/client/db/prisma";
 import { getServerSession } from "next-auth";
 import { revalidatePath } from "next/cache";
-import { authSelections } from "../api/auth/[...nextauth]/route";
 import { cookies } from "next/headers";
+import { error } from "node:console";
 
 export async function handleChange(prodId: string, quantity:number) {
     const cart = (await getCart())??(await createCart());
-    const item = cart.items.find((item)=>item.prodId === prodId);
-    if (quantity === 0){
+
+//Will revert it to original functionality to kill the mutant
+    const item = cart.items.find((item)=>item.prodId !== prodId); ////Mutant number1: replaced (item.prodId === prodId)
+// The next three lines are introduced to kill mutant1
+    if (quantity<0){
+        throw new Error("Invalid value");
+    }
+
+    if (quantity === 0){ //Mutant number1: replaced (quantity ===0)
         if(item){
             await prisma.cartItem.delete({where: {id: item.id}})
         }

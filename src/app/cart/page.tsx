@@ -3,7 +3,6 @@ import CartCard from "./CartCard";
 import { executeTransaction, handleChange } from "./actions";
 import { prisma } from "@/client/db/prisma";
 import { getServerSession } from "next-auth";
-import { authSelections } from "../api/auth/[...nextauth]/route";
 import { useTransition } from "react";
 import CheckoutButton from "./CheckoutButton";
 export const metadata = {

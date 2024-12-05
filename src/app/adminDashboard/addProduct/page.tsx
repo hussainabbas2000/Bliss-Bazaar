@@ -3,32 +3,13 @@ import { error } from "console";
 import { redirect } from "next/navigation";
 import Submit from "@/components/SubmitButton";
 import { getServerSession } from "next-auth";
-import { authSelections } from "../../api/auth/[...nextauth]/route";
 import { cookies } from "next/headers";
+import { addProd } from "./actions";
 export const metadata = {
   title: "Add Product - Bliss Bazaar",
 };
 
-export async function addProd(formData: FormData) {
-  "use server";
-  const session = cookies().get("localAdminID")?.value;
-  if(!session){
-    redirect("/admin/adminLogin");
-    return;
-  }
-  const name = formData.get("name")?.toString();
-  const description = formData.get("description")?.toString();
-  const price = Number(formData.get("price") || 0);
-  const imgUrl = formData.get("imageUrl")?.toString();
 
-  if (!name || !description || !imgUrl || !price) {
-    throw new Error("Required fields are missing!");
-  }
-  await prisma.product.create({
-    data: { description, imgUrl, name, price },
-  });
-  redirect("/adminDashboard");
-}
 export default async function AddProductPage() {
   const session = cookies().get("localAdminID")?.value;
   if(session==""){
