@@ -9,33 +9,7 @@ export const metadata = {
   title: "Add Product - Bliss Bazaar",
 };
 
-<<<<<<< HEAD
 
-=======
-export async function addProd(formData: FormData) {
-  "use server";
-  const session = cookies().get("localAdminID")?.value;
-  if(!session){
-    redirect("/admin/adminLogin");
-    return;
-  }
-  const name = formData.get("name")?.toString();
-  const description = formData.get("description")?.toString();
-  const price = Number(formData.get("price") || 0);
-  const imgUrl = formData.get("imageUrl")?.toString();
-
-  if (!name || !description || !imgUrl || !price) {
-    throw new Error("Required fields are missing!");
-  }
-  await prisma.product.create({
-    data: { description, imgUrl, name, price },
-  });
-  redirect("/adminDashboard");
-}
-
-
-
->>>>>>> 88f23dbaad64b4635bdec2443f1dd0e9e8501970
 export default async function AddProductPage() {
   const session = cookies().get("localAdminID")?.value;
   if(session==""){
