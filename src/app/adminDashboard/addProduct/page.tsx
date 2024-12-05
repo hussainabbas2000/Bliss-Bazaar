@@ -9,11 +9,12 @@ export const metadata = {
   title: "Add Product - Bliss Bazaar",
 };
 
-async function addProd(formData: FormData) {
+export async function addProd(formData: FormData) {
   "use server";
   const session = cookies().get("localAdminID")?.value;
-  if(session ==""){
+  if(!session){
     redirect("/admin/adminLogin");
+    return;
   }
   const name = formData.get("name")?.toString();
   const description = formData.get("description")?.toString();
@@ -21,7 +22,7 @@ async function addProd(formData: FormData) {
   const imgUrl = formData.get("imageUrl")?.toString();
 
   if (!name || !description || !imgUrl || !price) {
-    throw Error("Required fields are missing!");
+    throw new Error("Required fields are missing!");
   }
   await prisma.product.create({
     data: { description, imgUrl, name, price },
