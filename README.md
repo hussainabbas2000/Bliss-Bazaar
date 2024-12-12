@@ -1,5 +1,6 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+# Dev:
 ## Getting Started
 
 To push prisma models
@@ -42,3 +43,39 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+
+
+# Users:
+
+## Clone The Project In A Directory
+
+```bash
+git clone https://github.com/hussainabbas2000/Bliss-Bazaar.git
+```
+
+## Go To Root Of The Project And Do The Following:
+
+#### Note: There is no .env file for security purposes. Ask the developer on how to include it in the project
+
+### Installing Dependencies
+```bash
+npm install
+```
+### Generate Prisma Client
+```bash
+npx prisma generate
+```
+
+### Running the Application
+```bash
+npx run dev
+```
+
+## Running the Tests:
+
+### In a New Terminal at the Root:
+```bash
+npm test
+```
