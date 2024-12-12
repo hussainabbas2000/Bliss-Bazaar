@@ -76,6 +76,10 @@ npx run dev
 
 ## Running the Tests:
 
+### Installing Dependencies
+```bash
+npm install
+```
 ### In a New Terminal at the Root:
 ```bash
 npm test
