@@ -72,6 +72,7 @@ npx prisma generate
 ```bash
 npx run dev
 ```
+### The App runs on localhost:3000
 
 ## Running the Tests:
 
