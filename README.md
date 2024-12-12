@@ -75,12 +75,16 @@ npx run dev
 ### The App runs on localhost:3000
 
 ## Running the Tests:
+### Note: Try to run mutant testing file in a seperate execution run (Take it out of the directory for the first test execution run to achieve 100% coverage)
+
 
 ### Installing Dependencies
 ```bash
 npm install
 ```
+
 ### In a New Terminal at the Root:
 ```bash
 npm test
 ```
+
