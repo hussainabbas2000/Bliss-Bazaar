@@ -74,7 +74,8 @@ npx run dev
 ```
 ### The App runs on localhost:3000
 
-## Running the Tests:
+# Testers:
+## Running the Unit Tests:
 ### Note: Try to run mutant testing file in a seperate execution run (Take it out of the directory for the first test execution run to achieve 100% coverage)
 
 
@@ -87,4 +88,11 @@ npm install
 ```bash
 npm test
 ```
+
+## Regression Testing:
+### In a New Terminal at the __tests__ directory:
+```bash
+./buildTestSuites.sh <email_address>
+```
+Replace <email_address> with a valid email address where you want to see the build and test success flags
 
